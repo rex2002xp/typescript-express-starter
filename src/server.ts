@@ -71,7 +71,7 @@ export class Server {
 
     //configure pug
     this.app.set("views", path.join(__dirname, "views"));
-    this.app.set("view engine", "pug");
+    this.app.set("view engine", "hbs");
 
     //mount logger
     this.app.use(logger("dev"));
