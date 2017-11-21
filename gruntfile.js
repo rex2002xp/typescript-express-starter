@@ -9,13 +9,31 @@ module.exports = function (grunt) {
             expand: true,
             cwd: "./public",
             src: ["**"],
-            dest: "./dist/public"
+            dest: "./build/dist/public"
           },
           {
             expand: true,
-            cwd: "./views",
+            cwd: "./src/views",
             src: ["**"],
-            dest: "./dist/views"
+            dest: "./build/dist/views"
+          },
+          {
+            expand: true,
+            cwd: "./bin",
+            src: ["www"],
+            dest: "./build/bin"
+          },
+          {
+            expand: true,
+            cwd: "./assets/materialize-src/fonts",
+            src: ["**/**"],
+            dest: "./build/dist/public/assets/fonts"
+          },
+          {
+            expand: true,
+            cwd: "./assets/materialize-src/js",
+            src: ["**/**"],
+            dest: "./build/dist/public/assets/js"
           }
         ]
       }
@@ -24,7 +42,7 @@ module.exports = function (grunt) {
       app: {
         files: [{
           src: ["src/\*\*/\*.ts", "!src/.baseDir.ts"],
-          dest: "./dist"
+          dest: "./build/dist"
         }],
         options: {
           module: "commonjs",
@@ -39,7 +57,7 @@ module.exports = function (grunt) {
         tasks: ["ts"]
       },
       views: {
-        files: ["views/**/*.hbs"],
+        files: ["src/views/**/*.hbs"],
         tasks: ["copy"]
       }
     },
@@ -49,7 +67,7 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {                         // Dictionary of files
-          './public/assets/css/styles.css': './assets/materialize-src/sass/materialize.scss'
+          './build/dist/public/assets/css/styles.css': './assets/materialize-src/sass/materialize.scss'
         }
       }
     }

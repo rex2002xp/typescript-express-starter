@@ -5,7 +5,7 @@
   "private": true,
   "author": "Brian Love",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "dev": "NODE_ENV=development nodemon ./build/bin/www",
     "grunt": "grunt",
     "start": "node ./bin/www"
   },
