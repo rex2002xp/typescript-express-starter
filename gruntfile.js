@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   "use strict";
 
   grunt.initConfig({
@@ -39,17 +39,29 @@ module.exports = function(grunt) {
         tasks: ["ts"]
       },
       views: {
-        files: ["views/**/*.pug"],
+        files: ["views/**/*.hbs"],
         tasks: ["copy"]
+      }
+    },
+    sass: {                              // Tarea
+      build: {
+        options: {                       // Target options
+          style: 'expanded'
+        },
+        files: {                         // Dictionary of files
+          './public/assets/css/styles.css': './assets/materialize-src/sass/materialize.scss'
+        }
       }
     }
   });
 
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks("grunt-ts");
 
   grunt.registerTask("default", [
+    "sass",
     "copy",
     "ts"
   ]);
